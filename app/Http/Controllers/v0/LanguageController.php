@@ -9,7 +9,8 @@ use App\Professional;
 
 class LanguageController extends Controller
 {
-    function getLanguages(Request $request)
+    //Método para obtener un profesional y todas los idiomas del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -52,8 +53,8 @@ class LanguageController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showLanguage($id)
+/*
+    function show($id)
     {
         try {
             $language = Language::findOrFail($id);
@@ -71,7 +72,7 @@ class LanguageController extends Controller
         }
     }
 
-    function createLanguage(Request $request)
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -117,7 +118,7 @@ class LanguageController extends Controller
         }
     }
 
-    function updateLanguage(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -142,7 +143,7 @@ class LanguageController extends Controller
         }
     }
 
-    function deleteLanguage(Request $request)
+    function destroy(Request $request)
     {
         try {
             $language = Language::findOrFail($request->id)->delete();
@@ -159,4 +160,5 @@ class LanguageController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }

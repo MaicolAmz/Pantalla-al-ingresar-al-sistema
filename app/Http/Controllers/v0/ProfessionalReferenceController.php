@@ -9,7 +9,8 @@ use App\ProfessionalReference;
 
 class ProfessionalReferenceController extends Controller
 {
-    function getProfessionalReferences(Request $request)
+    //Método para obtener un profesional y todas las referencias profesionales del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -52,8 +53,8 @@ class ProfessionalReferenceController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showProfessionalReference($id)
+/*
+    function show($id)
     {
         try {
             $professionalReference = ProfessionalReference::findOrFail($id);
@@ -71,7 +72,7 @@ class ProfessionalReferenceController extends Controller
         }
     }
 
-    function createProfessionalReference(Request $request)
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -103,7 +104,7 @@ class ProfessionalReferenceController extends Controller
         }
     }
 
-    function updateProfessionalReference(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -128,7 +129,7 @@ class ProfessionalReferenceController extends Controller
         }
     }
 
-    function deleteProfessionalReference(Request $request)
+    function destroy(Request $request)
     {
         try {
             $professionalReference = ProfessionalReference::findOrFail($request->id)->delete();
@@ -145,4 +146,5 @@ class ProfessionalReferenceController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }

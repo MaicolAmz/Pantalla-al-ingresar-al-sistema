@@ -90,135 +90,90 @@ Route::group(['prefix' => 'institutions'], function () {
 Route::apiResource('institutions', 'v0\InstitutionController');
 */
 
-// ********************************************************
-
-/* Rutas para los usuarios
-Route::group(['prefix' => 'users'], function () {
-    //Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('', 'UserController@getAllUsers');
-        Route::get('/{id}', 'UserController@showUser');
-        Route::post('/filter', 'UserController@filterUsers');
-        Route::put('', 'UserController@updateUser');
-        Route::delete('', 'UserController@deleteUser');
-        Route::put('/password', 'UserController@updatePassword');
-        Route::get('/validateUserName/{id}', 'UserController@validateUserName');
-    //});
-});
-/**********************************************************************************************************************/
-
-/* Rutas para las ofertas*/
-Route::group(['prefix' => 'offers'], function () {
-    //Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('/professionals', 'OfferController@getAppliedProfessionals');
-        Route::post('/professionals', 'OfferController@createProfessional');
-        Route::post('', 'OfferController@createOffer');
-        Route::put('', 'OfferController@updateOffer');
-        Route::delete('', 'OfferController@deleteOffer');
-        Route::delete('/finish', 'OfferController@finishOffer');
-    //});
-});
-/**********************************************************************************************************************/
+// ****************************************************************************************************************
+// ****************************************************************************************************************
 
 /* Rutas para los profesionales*/
 Route::group(['prefix' => 'professionals'], function () {
     //Route::group(['middleware' => 'auth:api'], function () {
-       Route::get('/abilities', 'ProfessionalController@getAbilities');
-       Route::get('/academicFormations', 'ProfessionalController@getAcademicFormations');
-       Route::get('/courses', 'ProfessionalController@getCourses');
-       Route::get('/languages', 'ProfessionalController@getLanguages');
-       Route::get('/professionalExperiences', 'ProfessionalController@getProfessionalExperiences');
-       Route::get('/professionalReferences', 'ProfessionalController@getProfessionalReferences');
-       Route::get('/offers', 'ProfessionalController@getAppliedOffers');
-       Route::post('/offers/filter', 'ProfessionalController@filterOffers');
-       Route::post('/offers', 'ProfessionalController@createOffer');
-       Route::get('/companies', 'ProfessionalController@getAppliedCompanies');
-       Route::get('/{id}', 'ProfessionalController@showProfessional');
-       Route::post('', 'ProfessionalController@createProfessional');
-       Route::put('', 'ProfessionalController@updateProfessional');
-       Route::delete('', 'ProfessionalController@deleteProfessional');
+        
+        //Ruta para obtener un profesional segun el id, realizació ncon la tabla academicFormations
+        Route::get('/{id}', 'ProfessionalController@showProfessional');
     //});
 });
 /**********************************************************************************************************************/
 
 /* Rutas para los Formacion Academica*/
-Route::apiResource('academicFormations', 'v0\AcademicFormationController');
+Route::group(['middleware' => 'auth:api'], function () {
+    
+    //Ruta para obtener un profesional y todas las formaciones academicas del profesional
+    Route::apiResource('academicFormations', 'v0\AcademicFormationController');
+});
 /**********************************************************************************************************************/
 
 /* Rutas para los idiomas*/
-Route::apiResource('languages', 'v0\LanguageController');
+Route::group(['middleware' => 'auth:api'], function () {
+
+    //Ruta para obtener un profesional y todas los idiomas academicas del profesional
+    Route::apiResource('languages', 'v0\LanguageController');
+});
 /**********************************************************************************************************************/
 
 /* Rutas para las fortalezas*/
-Route::apiResource('abilities', 'v0\AbilityController');
+Route::group(['middleware' => 'auth:api'], function () {
+
+    //Ruta para obtener un profesional y todas las fortalezas del profesional
+    Route::apiResource('abilities', 'v0\AbilityController');
+});
 /**********************************************************************************************************************/
 
 /* Rutas para los cursos*/
-Route::apiResource('courses', 'v0\CourseController');
+Route::group(['middleware' => 'auth:api'], function () {
+
+    //Ruta para obtener un profesional y todos los cursos del profesional
+    Route::apiResource('courses', 'v0\CourseController');
+});
 /**********************************************************************************************************************/
 
 /* Rutas para las experiencias pofesionales*/
-Route::apiResource('professionalExperiences', 'v0\ProfessionalExperienceController');
+Route::group(['middleware' => 'auth:api'], function () {
+
+    //Ruta para obtener un profesional y todas las experiencias profesionales del profesional
+    Route::apiResource('professionalExperiences', 'v0\ProfessionalExperienceController');
+});
 /**********************************************************************************************************************/
 
 /* Rutas para las referencias pofesionales*/
-Route::apiResource('professionalReferences', 'v0\ProfessionalReferenceController');
-/**********************************************************************************************************************/
+Route::group(['middleware' => 'auth:api'], function () {
 
-/* Rutas para las empresas*/
-Route::group(['prefix' => 'companies'], function () {
-    //Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('/professionals', 'CompanyController@getAppliedProfessionals');
-        Route::get('/offers', 'CompanyController@getOffers');
-        Route::post('/offers', 'CompanyController@createOffer');
-        Route::put('/offers', 'CompanyController@updateOffer');
-        Route::post('/offers/filter', 'CompanyController@filterOffers');
-        Route::get('', 'CompanyController@getAllCompanies');
-        Route::get('/{id}', 'CompanyController@showCompany');
-        Route::put('', 'CompanyController@updateCompany');
-        Route::delete('', 'CompanyController@deleteCompany');
-    //});
+    //Ruta para obtener un profesional y todas las referencias profesionales academicas del profesional
+    Route::apiResource('professionalReferences', 'v0\ProfessionalReferenceController');
 });
-
-/* Rutas publicas*/
-/*
-Route::group(['prefix' => 'companies'], function () {
-    /* Rutas para login y logout
-    Route::post('/login', 'UserController@login');
-    Route::post('/logout', 'UserController@logout');
-});
-*/
-/**********************************************************************************************************************/
-
-/* Rutas para registar usuarios (Profesionales y Empresas)
-Route::group(['prefix' => 'users'], function () {
-    /* Rutas para login y logout
-    Route::post('/createCompanyUser', 'UserController@createCompanyUser');
-    Route::post('/createProfessionalUser', 'UserController@createProfessionalUser');
-});
-*/
 /**********************************************************************************************************************/
 
 /* Rutas para obtener todos los profesionales y ofertas*/
 Route::group(['prefix' => 'postulants'], function () {
+
+    // Ruta para gestionar los datos personales
     Route::get('', 'ProfessionalController@getProfessionals');
+    
+    //Método para aplicar a una empresa
     Route::post('/apply', 'CompanyController@applyPostulant');
+
+    //Método para separar a un profesional de la empresa
     Route::post('/detachCompany', 'ProfessionalController@detachCompany');
+
+    //Método para validar aplicación de un profesional a una empresa
     Route::get('/validateAppliedPostulant', 'ProfessionalController@validateAppliedPostulant');
 });
 
-Route::group(['prefix' => 'oportunities'], function () {
-    Route::get('', 'OfferController@getOffers');
-    Route::get('/validateAppliedOffer', 'OfferController@validateAppliedOffer');
-    Route::post('/apply', 'OfferController@applyOffer');
-});
-
-Route::post('/companies/detachPostulant', 'CompanyController@detachPostulant');
-
+// ????????????
 Route::get('/totalCompanies', function () {
     $totalCompanies = \App\Company::where('state', 'ACTIVE')->count();
     return response()->json(['totalCompanies' => $totalCompanies], 200);
 });
 
+// ???????????
 Route::get('/totalOffers', function () {
     $now = Carbon::now();
     $totalOffers = \App\Offer::where('state', 'ACTIVE')
@@ -228,22 +183,21 @@ Route::get('/totalOffers', function () {
     return response()->json(['totalOffers' => $totalOffers], 200);
 });
 
+// ?????????????
 Route::get('/totalProfessionals', function () {
     $totalProfessionals = \App\Professional::where('state', 'ACTIVE')->count();
     return response()->json(['totalProfessionals' => $totalProfessionals], 200);
 });
 
-Route::get('/offers', 'OfferController@getAllOffers');
 /**********************************************************************************************************************/
 
 /* Rutas para filtrar a los profesionales y ofertas*/
-Route::post('/offers/filter', 'OfferController@filterOffers');
-Route::get('/oportunities/filter', 'OfferController@filterOffersFields');
+
+//Ruta que ingresar el filtro para realizar la consulta
 Route::post('/postulants/filter', 'ProfessionalController@filterPostulants');
+
+//Ruta que obtiene la busqueda que se realiza   
 Route::get('/postulants/filter', 'ProfessionalController@filterPostulantsFields');
 /**********************************************************************************************************************/
-Route::get('/professionals', 'ProfessionalController@getAllProfessionals');
-
-Route::get('/validate_cedula', 'UserController@validateCedula');
 
 

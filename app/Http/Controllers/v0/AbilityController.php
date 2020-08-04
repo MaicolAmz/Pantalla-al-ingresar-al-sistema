@@ -9,7 +9,8 @@ use App\Ability;
 
 class AbilityController extends Controller
 {
-    function getAbilities(Request $request)
+    //Método para obtener un profesional y todas las habilidades del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -52,8 +53,8 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showAbility($id)
+/*
+    function show($id)
     {
         try {
             $ability = Ability::findOrFail($id);
@@ -70,7 +71,7 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
-
+*/
     function validateDuplicate($dataAbility, $professional)
     {
         return Ability::where('category', $dataAbility['category'])
@@ -78,8 +79,8 @@ class AbilityController extends Controller
             ->where('state', '<>', 'DELETED')
             ->first();
     }
-
-    function createAbility(Request $request)
+/*
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -117,7 +118,7 @@ class AbilityController extends Controller
         }
     }
 
-    function updateAbility(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -140,7 +141,7 @@ class AbilityController extends Controller
         }
     }
 
-    function deleteAbility(Request $request)
+    function destroy(Request $request)
     {
         try {
             $ability = Ability::findOrFail($request->id)->update([
@@ -159,4 +160,5 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }

@@ -19,6 +19,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ProfessionalController extends Controller
 {
+    /*
     function getAbilities(Request $request)
     {
         try {
@@ -342,7 +343,9 @@ class ProfessionalController extends Controller
         }
 
     }
+*/
 
+    //Método para filtrar postulantes
     function filterPostulants(Request $request)
     {
         $data = $request->json()->all();
@@ -367,6 +370,7 @@ class ProfessionalController extends Controller
 
     }
 
+    //Método para filtrar postulantes segun cambios
     function filterPostulantsFields(Request $request)
     {
         $postulants = Professional::
@@ -391,6 +395,7 @@ class ProfessionalController extends Controller
     }
 
     /* Metodo para obtener todas las ofertas a las que aplico el profesional*/
+    /*
     function getAppliedOffers(Request $request)
     {
         try {
@@ -438,6 +443,7 @@ class ProfessionalController extends Controller
     }
 
     /* Metodo para filtrar a los profesionales*/
+    /*
     function filterProfessionals(Request $request)
     {
 
@@ -468,6 +474,7 @@ class ProfessionalController extends Controller
     }
 
     /* Metodo para asignar ofertas a un profesional*/
+    /*
     function createOffer(Request $request)
     {
 
@@ -515,7 +522,7 @@ class ProfessionalController extends Controller
             ], 'postulants' => $professionals], 200);
 
     }
-
+/*
     function getAllProfessionals()
     {
         $professionals = Professional::
@@ -526,6 +533,9 @@ class ProfessionalController extends Controller
         return response()->json(['professionals' => $professionals], 200);
 
     }
+    */
+
+    //Método para obtener un profesional segun el id, con la tabla academicFormations
 
     function showProfessional($id)
     {
@@ -544,7 +554,7 @@ class ProfessionalController extends Controller
             return response()->json($e, 500);
         }
     }
-
+    /*
     function updateProfessional(Request $request)
     {
         try {
@@ -597,7 +607,9 @@ class ProfessionalController extends Controller
             return response()->json('Error', 500);
         }
     }
+*/
 
+    //Método para validar aplicación de un profesional a una empresa
     function validateAppliedPostulant(Request $request)
     {
         try {
@@ -632,6 +644,7 @@ class ProfessionalController extends Controller
         }
     }
 
+    //Método para separar a un profesional de la empresa
     function detachCompany(Request $request)
     {
         try {
@@ -665,6 +678,5 @@ class ProfessionalController extends Controller
         }
 
     }
-
 
 }

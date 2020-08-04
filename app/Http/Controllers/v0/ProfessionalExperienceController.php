@@ -9,7 +9,8 @@ use App\ProfessionalExperience;
 
 class ProfessionalExperienceController extends Controller
 {
-    function getProfessionalExperiences(Request $request)
+    //Método para obtener un profesional y todas las experiencias del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -52,8 +53,8 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showProfessionalExperience($id)
+/*
+    function show($id)
     {
         try {
             $professionalExperiences = ProfessionalExperience::findOrFail($id);
@@ -71,7 +72,7 @@ class ProfessionalExperienceController extends Controller
         }
     }
 
-    function createProfessionalExperience(Request $request)
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -105,7 +106,7 @@ class ProfessionalExperienceController extends Controller
         }
     }
 
-    function updateProfessionalExperience(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -133,7 +134,7 @@ class ProfessionalExperienceController extends Controller
         }
     }
 
-    function deleteProfessionalExperience(Request $request)
+    function destroy(Request $request)
     {
         try {
             $professionalExperience = ProfessionalExperience::findOrFail($request->id)->delete();
@@ -150,4 +151,5 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }

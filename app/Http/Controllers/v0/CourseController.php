@@ -9,7 +9,8 @@ use App\Course;
 
 class CourseController extends Controller
 {
-    function getCourses(Request $request)
+    //Método para obtener un profesional y todas los cursos del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -51,8 +52,8 @@ class CourseController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showCourse($id)
+/*
+    function show($id)
     {
         try {
             $course = Course::findOrFail($id);
@@ -70,7 +71,7 @@ class CourseController extends Controller
         }
     }
 
-    function createCourse(Request $request)
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -104,7 +105,7 @@ class CourseController extends Controller
         }
     }
 
-    function updateCourse(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -132,7 +133,7 @@ class CourseController extends Controller
         }
     }
 
-    function deleteCourse(Request $request)
+    function destroy(Request $request)
     {
         try {
             $course = Course::findOrFail($request->id)->delete();
@@ -149,4 +150,5 @@ class CourseController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }

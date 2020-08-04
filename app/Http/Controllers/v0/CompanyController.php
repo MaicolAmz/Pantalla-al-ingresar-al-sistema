@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-
+    //Método para aplicar a una empresa
     function applyPostulant(Request $request)
     {
         try {
@@ -49,7 +49,7 @@ class CompanyController extends Controller
         }
 
     }
-
+/*
     function detachPostulant(Request $request)
     {
         try {
@@ -349,5 +349,5 @@ class CompanyController extends Controller
             return response()->json($e, 500);
         }
     }
-
+*/
 }

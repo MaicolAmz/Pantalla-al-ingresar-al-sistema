@@ -11,7 +11,8 @@ use App\AcademicFormation;
 
 class AcademicFormationController extends Controller
 {
-    function getAcademicFormations(Request $request)
+    //Método para obtener un profesional y todas las formaciones academicas del profesional
+    function index(Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -52,8 +53,8 @@ class AcademicFormationController extends Controller
             return response()->json($e, 500);
         }
     }
-
-    function showAcademicFormation($id)
+/*
+    function show($id)
     {
         try {
             $academicFormation = AcademicFormation::findOrFail($id);
@@ -71,7 +72,7 @@ class AcademicFormationController extends Controller
         }
     }
 
-    function createAcademicFormation(Request $request)
+    function store(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -105,7 +106,7 @@ class AcademicFormationController extends Controller
         }
     }
 
-    function updateAcademicFormation(Request $request)
+    function update(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -132,7 +133,7 @@ class AcademicFormationController extends Controller
         }
     }
 
-    function deleteAcademicFormation(Request $request)
+    function destroy(Request $request)
     {
         try {
             $academicFormation = AcademicFormation::findOrFail($request->id)->delete();
@@ -149,4 +150,5 @@ class AcademicFormationController extends Controller
             return response()->json($e, 500);
         }
     }
+*/
 }
