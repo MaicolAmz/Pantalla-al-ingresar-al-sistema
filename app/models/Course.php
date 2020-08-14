@@ -19,9 +19,7 @@ class Course extends Model
         'event_name',
         'start_date',
         'finish_date',
-        'hours',
-        'type_certification',
-        'state',
+        'hours'
     ];
 
     public function profsesional()

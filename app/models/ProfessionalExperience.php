@@ -15,13 +15,11 @@ class ProfessionalExperience extends Model
      */
     protected $fillable = [
         'employer',
-        'position',
         'job_description',
         'start_date',
         'finish_date',
         'reason_leave',
-        'current_work',
-        'state',
+        'current_work'
     ];
 
     public function profsesional()

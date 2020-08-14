@@ -14,11 +14,6 @@ class Language extends Model
      * @var array
      */
     protected $fillable = [
-        'description',
-        'written_level',
-        'spoken_level',
-        'reading_level',
-        'state',
     ];
 
     public function profsesional()

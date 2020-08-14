@@ -15,7 +15,7 @@ class File extends Model implements Auditable
         'name',
         'description',
         'type',
-        'icon',
+        'icon'
     ];
 
     public function fileable()

@@ -14,16 +14,8 @@ class Company extends Model
      * @var array
      */
     protected $fillable = [
-        'identity',
-        'nature',
         'trade_name',
-        'email',
-        'comercial_activity',
-        'phone',
-        'cell_phone',
-        'web_page',
-        'address',
-        'state',
+        'comercial_activity'
     ];
 
     public function offers()

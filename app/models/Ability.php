@@ -14,10 +14,8 @@ class Ability extends Model
      * @var array
      */
     protected $fillable = [
-        'category',
-        'description',
-        'state',
-    ];
+        'description'
+    ]; 
 
     public function profsesional()
     {

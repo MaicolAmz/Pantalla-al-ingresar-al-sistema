@@ -14,13 +14,9 @@ class AcademicFormation extends Model
      * @var array
      */
     protected $fillable = [
-        'institution',
-        'career',
-        'professional_degree',
         'registration_date',
         'senescyt_code',
-        'has_titling',
-        'state',
+        'has_titling'
     ];
 
     public function profsesional()

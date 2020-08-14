@@ -12,18 +12,7 @@ class Professional extends Model
      * @var array
      */
     protected $fillable = [
-        'identity',
-        'first_name',
-        'last_name',
-        'email',
-        'nationality',
-        'civil_state',
-        'birthdate',
-        'gender',
-        'phone',
-        'address',
-        'about_me',
-        'state',
+        'about_me'
     ];
 
     public function offers()
