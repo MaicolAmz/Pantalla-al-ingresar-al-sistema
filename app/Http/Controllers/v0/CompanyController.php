@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
 use Illuminate\Support\Facades\DB;
-use App\Company;
-use App\Offer;
-use App\Professional;
+use App\Models\Company;
+use App\Models\Offer;
+use App\Models\Professional;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 

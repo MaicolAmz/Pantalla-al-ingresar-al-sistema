@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Models\AcademicFormation;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(AcademicFormation::class, function (Faker $faker) {
     return [
         'registration_date' => $faker->date,
         'senescyt_code' => $faker->iban,

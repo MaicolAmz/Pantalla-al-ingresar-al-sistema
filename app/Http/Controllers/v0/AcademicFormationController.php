@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Professional;
-use App\AcademicFormation;
+use App\Models\Professional;
+use App\Models\AcademicFormation;
 
 
 class AcademicFormationController extends Controller

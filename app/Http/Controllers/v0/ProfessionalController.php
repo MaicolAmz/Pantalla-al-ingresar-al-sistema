@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
-use App\Ability;
-use App\AcademicFormation;
-use App\Company;
-use App\Course;
-use App\Language;
-use App\Offer;
-use App\Professional;
-use App\ProfessionalExperience;
-use App\ProfessionalReference;
+use App\Models\Ability;
+use App\Models\AcademicFormation;
+use App\Models\Company;
+use App\Models\Course;
+use App\Models\Language;
+use App\Models\Offer;
+use App\Models\Professional;
+use App\Models\ProfessionalExperience;
+use App\Models\ProfessionalReference;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;

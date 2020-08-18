@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use App\Language;
-use App\Professional;
+use App\Models\Language;
+use App\Models\Professional;
 
 class LanguageController extends Controller
 {

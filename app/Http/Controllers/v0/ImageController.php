@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
-use App\Image;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller

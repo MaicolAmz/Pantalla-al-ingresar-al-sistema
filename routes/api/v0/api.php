@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -97,86 +98,86 @@ Route::apiResource('institutions', 'v0\InstitutionController');
 Route::group(['prefix' => 'professionals'], function () {
     //Route::group(['middleware' => 'auth:api'], function () {
         
-        //Ruta para obtener un profesional segun el id, realizació ncon la tabla academicFormations
-        Route::get('/{id}', 'ProfessionalController@showProfessional');
+        //Ruta para obtener un profesional segun el id, relación con la tabla academicFormations
+        Route::get('/{id}', 'v0\ProfessionalController@showProfessional');
     //});
 });
 /**********************************************************************************************************************/
 
 /* Rutas para los Formacion Academica*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
     
     //Ruta para obtener un profesional y todas las formaciones academicas del profesional
     Route::apiResource('academicFormations', 'v0\AcademicFormationController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para los idiomas*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
 
     //Ruta para obtener un profesional y todas los idiomas academicas del profesional
     Route::apiResource('languages', 'v0\LanguageController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para las fortalezas*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
 
     //Ruta para obtener un profesional y todas las fortalezas del profesional
     Route::apiResource('abilities', 'v0\AbilityController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para los cursos*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
 
     //Ruta para obtener un profesional y todos los cursos del profesional
     Route::apiResource('courses', 'v0\CourseController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para las experiencias pofesionales*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
 
     //Ruta para obtener un profesional y todas las experiencias profesionales del profesional
     Route::apiResource('professionalExperiences', 'v0\ProfessionalExperienceController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para las referencias pofesionales*/
-Route::group(['middleware' => 'auth:api'], function () {
+//Route::group(['middleware' => 'auth:api'], function () {
 
     //Ruta para obtener un profesional y todas las referencias profesionales academicas del profesional
     Route::apiResource('professionalReferences', 'v0\ProfessionalReferenceController');
-});
+//});
 /**********************************************************************************************************************/
 
 /* Rutas para obtener todos los profesionales y ofertas*/
 Route::group(['prefix' => 'postulants'], function () {
 
     // Ruta para gestionar los datos personales
-    Route::get('', 'ProfessionalController@getProfessionals');
+    Route::get('', 'v0\ProfessionalController@getProfessionals');
     
     //Método para aplicar a una empresa
-    Route::post('/apply', 'CompanyController@applyPostulant');
+    Route::post('/apply', 'v0\CompanyController@applyPostulant');
 
     //Método para separar a un profesional de la empresa
-    Route::post('/detachCompany', 'ProfessionalController@detachCompany');
+    Route::post('/detachCompany', 'v0\ProfessionalController@detachCompany');
 
     //Método para validar aplicación de un profesional a una empresa
-    Route::get('/validateAppliedPostulant', 'ProfessionalController@validateAppliedPostulant');
+    Route::get('/validateAppliedPostulant', 'v0\ProfessionalController@validateAppliedPostulant');
 });
 
 // ????????????
 Route::get('/totalCompanies', function () {
-    $totalCompanies = \App\Company::where('state', 'ACTIVE')->count();
+    $totalCompanies = \App\Models\Company::where('state', 'ACTIVE')->count();
     return response()->json(['totalCompanies' => $totalCompanies], 200);
 });
 
 // ???????????
 Route::get('/totalOffers', function () {
     $now = Carbon::now();
-    $totalOffers = \App\Offer::where('state', 'ACTIVE')
+    $totalOffers = \App\Models\Offer::where('state', 'ACTIVE')
         ->where('finish_date', '>=', $now->format('Y-m-d'))
         ->where('start_date', '<=', $now->format('Y-m-d'))
         ->count();
@@ -185,7 +186,7 @@ Route::get('/totalOffers', function () {
 
 // ?????????????
 Route::get('/totalProfessionals', function () {
-    $totalProfessionals = \App\Professional::where('state', 'ACTIVE')->count();
+    $totalProfessionals = \App\Models\Professional::where('state', 'ACTIVE')->count();
     return response()->json(['totalProfessionals' => $totalProfessionals], 200);
 });
 
@@ -194,10 +195,10 @@ Route::get('/totalProfessionals', function () {
 /* Rutas para filtrar a los profesionales y ofertas*/
 
 //Ruta que ingresar el filtro para realizar la consulta
-Route::post('/postulants/filter', 'ProfessionalController@filterPostulants');
+Route::post('/postulants/filter', 'v0\ProfessionalController@filterPostulants');
 
 //Ruta que obtiene la busqueda que se realiza   
-Route::get('/postulants/filter', 'ProfessionalController@filterPostulantsFields');
+Route::get('/postulants/filter', 'v0\ProfessionalController@filterPostulantsFields');
 /**********************************************************************************************************************/
 
 

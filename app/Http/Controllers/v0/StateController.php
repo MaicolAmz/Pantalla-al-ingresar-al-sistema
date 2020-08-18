@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
-use App\State;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class StateController extends Controller

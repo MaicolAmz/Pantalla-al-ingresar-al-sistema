@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
-use App\Company;
-use App\Offer;
-use App\Professional;
+use App\Models\Company;
+use App\Models\Offer;
+use App\Models\Professional;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;

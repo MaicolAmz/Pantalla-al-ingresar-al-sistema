@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\v0;
 
-use App\File;
+use App\Models\File;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
