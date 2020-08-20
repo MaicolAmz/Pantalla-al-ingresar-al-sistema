@@ -8,7 +8,7 @@ use App\Models\JobBoard\Offer;
 use App\Models\JobBoard\Professional;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class CompanyController extends Controller
 {

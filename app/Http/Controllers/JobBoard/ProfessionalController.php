@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use App\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class ProfessionalController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
