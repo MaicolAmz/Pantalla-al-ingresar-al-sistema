@@ -29,9 +29,9 @@ class ProfessionalController extends Controller
         $postulants = Professional::
         join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
             ->orWhere($dataFilter['conditions'])
-            ->where('professionals.state', 'ACTIVE')
+            ->where('professionals.state_id', 1)
             ->where('professionals.about_me', '<>', '')
-            ->where('academic_formations.state', 'ACTIVE')
+            ->where('academic_formations.state_id', 1)
             ->orderby('professionals.' . $request->field, $request->order)
             ->paginate($request->limit);
         return response()->json([
@@ -52,10 +52,10 @@ class ProfessionalController extends Controller
         $postulants = Professional::
         join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
             ->where('professionals.about_me', '<>', '')
-            ->where('professionals.state', 'ACTIVE')
-            ->where('academic_formations.state', 'ACTIVE')
-            ->where('career', 'like', strtoupper($request->filter) . '%')
-            ->OrWhere('professional_degree', 'like', '%' . strtoupper($request->filter) . '%')
+            ->where('professionals.state_id', 1)
+            ->where('academic_formations.state_id', 1)
+            //->where('career', 'like', strtoupper($request->filter) . '%')
+            //->OrWhere('professional_degree', 'like', '%' . strtoupper($request->filter) . '%')
             ->orderby('professionals.' . $request->field, $request->order)
             ->paginate($request->limit);
         return response()->json([
@@ -78,7 +78,7 @@ class ProfessionalController extends Controller
         $professionals = Professional::
         join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
             ->with('academicFormations')
-            ->where('professionals.state', 'ACTIVE')
+            ->where('professionals.state_id', 1)
             ->where('professionals.about_me', '<>', '')
 //            ->where('academic_formations.state', 'ACTIVE')
             ->orderby('professionals.' . $request->field, $request->order)

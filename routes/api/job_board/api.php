@@ -44,9 +44,9 @@ Route::group(['prefix' => 'postulants'], function () {
 // ????????????
 Route::get('/total', function () {
     $now = Carbon::now();
-    $totalCompanies = \App\Models\JobBoard\Company::where('state', 'ACTIVE')->count();
-    $totalProfessionals = \App\Models\JobBoard\Professional::where('state', 'ACTIVE')->count();
-    $totalOffers = \App\Models\Offer::where('state', 'ACTIVE')
+    $totalCompanies = \App\Models\JobBoard\Company::where('state_id', 1)->count();
+    $totalProfessionals = \App\Models\JobBoard\Professional::where('state_id', 1)->count();
+    $totalOffers = \App\Models\JobBoard\Offer::where('state_id', 1)
         ->where('finish_date', '>=', $now->format('Y-m-d'))
         ->where('start_date', '<=', $now->format('Y-m-d'))
         ->count();
