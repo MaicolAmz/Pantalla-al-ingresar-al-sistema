@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\ProfessionalExperience;
+use App\Models\JobBoard\ProfessionalExperience;
 use Faker\Generator as Faker;
 
 $factory->define(ProfessionalExperience::class, function (Faker $faker) {

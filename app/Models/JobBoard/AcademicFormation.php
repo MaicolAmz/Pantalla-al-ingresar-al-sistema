@@ -4,7 +4,9 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JoabBoard\Professional;
+use App\Models\JobBoard\Professional;
+use App\Models\Ignug\State;
+use App\Models\JobBoard\Catalogue;
 
 class AcademicFormation extends Model implements Auditable
 {
@@ -23,9 +25,29 @@ class AcademicFormation extends Model implements Auditable
         'has_titling'
     ];
 
-    public function profsesional()
+    public function professional()
     {
         return $this->belongsTo(Professional::class);
     }
+
+    public function institution()
+    {
+        return $this->belongsTo(Catalogue::class);
+    }
+
+    public function career()
+    {
+        return $this->belongsTo(Catalogue::class);
+    }
+
+    public function professional_degree()
+    {
+        return $this->belongsTo(Catalogue::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }    
 
 }

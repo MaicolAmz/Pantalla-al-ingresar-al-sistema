@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\ProfessionalReference;
+use App\Models\JobBoard\ProfessionalReference;
 use Faker\Generator as Faker;
 
 $factory->define(ProfessionalReference::class, function (Faker $faker) {

@@ -4,9 +4,10 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JoabBoard\Professional;
-use App\Models\JoabBoard\Offer;
+use App\Models\JobBoard\Professional;
+use App\Models\JobBoard\Offer;
 use App\Models\User;
+use App\Models\Ignug\State;
 
 class Company extends Model implements Auditable
 {
@@ -37,5 +38,10 @@ class Company extends Model implements Auditable
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
     }
 }
