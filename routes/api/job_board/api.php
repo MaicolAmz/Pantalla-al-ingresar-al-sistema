@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// ****************************************************************************************************************
-// ****************************************************************************************************************
-
 /* Rutas para los profesionales*/
 Route::group(['prefix' => 'professionals'], function () {
     //Route::group(['middleware' => 'auth:api'], function () {
@@ -63,5 +60,3 @@ Route::post('/postulants/filter', 'JobBoard\ProfessionalController@filterPostula
 //Ruta que obtiene la busqueda que se realiza   
 Route::get('/postulants/filter', 'JobBoard\ProfessionalController@filterPostulantsFields');
 /**********************************************************************************************************************/
-
-
