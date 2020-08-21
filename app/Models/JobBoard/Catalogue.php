@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Models\Ignug;
+namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\Ignug\State;
 
 class Catalogue extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    protected $connection = 'pgsql-ignug';
+    protected $connection = 'pgsql-job-board';
     protected $fillable = [
         'code',
         'name',

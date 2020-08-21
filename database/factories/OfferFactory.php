@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Models\JobBoard\Offer;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Offer::class, function (Faker $faker) {
     return [
         'company_id' => $faker->random_int(1, 10),
         'code' => $faker->text,

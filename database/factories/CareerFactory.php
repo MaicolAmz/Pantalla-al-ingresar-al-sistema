@@ -2,21 +2,20 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Career;
+use App\Models\Ignug\Career;
 use Faker\Generator as Faker;
 
 $factory->define(Career::class, function (Faker $faker) {
     return [
-        'institution_id' => $faker->random_int(1, 10),
-        'code' => $faker->text,
-        'name' => $faker->text,
-        'description' => $faker->text,
-        'modality_id' => $faker->random_int(1, 10),
-        'professional_degree_id' => $faker->random_int(1, 10),
-        'resolution_number' => $faker->text,
-        'title' => $faker->text,
-        'acronym' => $faker->text,
-        'type_id' => $faker->random_int(1, 10),
+        'institution_id' => rand(1, 10),
+        'code' => $faker->ean13,
+        'name' => $faker->streetName,
+        'description' => $faker->text($maxNbChars = 100),
+        'modality_id' => rand(1, 10),
+        'resolution_number' => $faker->text($maxNbChars = 200),
+        'title' => $faker->text($maxNbChars = 100),
+        'acronym' => $faker->text($maxNbChars = 100),
+        'type_id' => rand(1, 10),
         'state_id' => 1
     ];
 });

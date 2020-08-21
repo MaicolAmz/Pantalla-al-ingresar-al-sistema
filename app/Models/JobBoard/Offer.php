@@ -4,9 +4,10 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JoabBoard\Professional;
-use App\Models\JoabBoard\Company;
-
+use App\Models\JobBoard\Professional;
+use App\Models\JobBoard\Company;
+use App\Models\Ignug\State;
+use App\Models\JobBoard\Location;
 
 class Offer extends Model implements Auditable
 {
@@ -49,5 +50,13 @@ class Offer extends Model implements Auditable
         return $this->belongsToMany(Professional::class)->withTimestamps();
     }
 
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 }

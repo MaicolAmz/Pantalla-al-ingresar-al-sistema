@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 use App\Models\Attendance\Attendance;
 use App\Models\Attendance\Task;
 use App\Models\Attendance\Workday;
+use App\User;
+use App\Role;
 use App\Models\Ignug\Career;
 use App\Models\Ignug\Catalogue;
 use App\Models\Ignug\File;
@@ -31,7 +33,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // States
-        /*
+/*
         factory(State::class)->create([
             'code' => '1',
             'name' => 'ACTIVE',
@@ -48,8 +50,8 @@ class DatabaseSeeder extends Seeder
             'state' => 1,
         ]);
 
-        // Catalogues
-        // Workday Principal
+        Catalogues
+        Workday Principal
         factory(Catalogue::class)->create([
             'code' => 'work',
             'name' => 'Jornada',
@@ -58,7 +60,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Workday Secundary
+        Workday Secundary
         factory(Catalogue::class)->create([
             'code' => 'lunch',
             'name' => 'Almuerzo',
@@ -67,7 +69,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Task Processes
+        Task Processes
         factory(Catalogue::class)->create([
             'code' => 'academic',
             'name' => 'ACADEMICO',
@@ -97,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Task Subprocesses academic
+        Task Subprocesses academic
         factory(Catalogue::class)->create([
             'parent_code_id' => 3,
             'code' => '1',
@@ -155,7 +157,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Task Subprocesses administrative
+        Task Subprocesses administrative
         factory(Catalogue::class)->create([
             'parent_code_id' => 4,
             'code' => '1',
@@ -197,7 +199,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Task Subprocesses entailment
+        Task Subprocesses entailment
         factory(Catalogue::class)->create([
             'parent_code_id' => 5,
             'code' => '1',
@@ -231,7 +233,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Task Subprocesses investigation
+        Task Subprocesses investigation
         factory(Catalogue::class)->create([
             'parent_code_id' => 6,
             'code' => '1',
@@ -297,7 +299,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Ethnic origin
+        Ethnic origin
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'INDIGENA',
@@ -353,7 +355,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Sex
+        Sex
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'HOMBRE',
@@ -366,7 +368,7 @@ class DatabaseSeeder extends Seeder
             'type' => 'sex',
             'state_id' => 1,
         ]);
-        // Gender
+        Gender
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'MASCULINO',
@@ -380,7 +382,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Indetification Type
+        Indetification Type
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'CEDULA',
@@ -394,7 +396,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // Blood Type
+        Blood Type
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'A+',
@@ -444,7 +446,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // career modality
+        career modality
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'PRESENCIAL',
@@ -470,7 +472,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // career type
+        career type
         factory(Catalogue::class)->create([
             'code' => '1',
             'name' => 'TECNICATURA',
@@ -484,7 +486,7 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        // location
+        location
         factory(Catalogue::class)->create([
             'code' => 'ec',
             'name' => 'ECUADOR',
@@ -517,25 +519,25 @@ class DatabaseSeeder extends Seeder
             'name' => 'ADMINISTRATIVO',
             'state_id' => 1,
         ]);
-            */
+*/
 
-       // factory(App\User::class, 100)->create();
-        factory(Ability::class, 10)->create();
-        factory(AcademicFormation::class, 10)->create();
-        factory(Attendance::class, 10)->create();
+        factory(State::class, 10)->create();
+        factory(Catalogue::class, 10)->create();
+        factory(Institution::class, 10)->create();
+        //factory(Role::class, 10)->create();
+        factory(User::class, 10)->create();
         factory(Career::class, 10)->create(); 
-        //factory(Catalogue::class, 10)->create();
-        factory(Company::class, 10)->create();
-        factory(Course::class, 10)->create();
+        //factory(Teacher::class, 10)->create();
+        //factory(Attendance::class, 10)->create();
         //factory(File::class, 10)->create();
         //factory(Image::class, 10)->create();
-        //factory(Institution::class, 10)->create();
-        factory(ProfessionalExperience::class, 10)->create();
+        factory(Company::class, 10)->create();
+        factory(Offer::class, 10)->create();
         factory(Professional::class, 10)->create();
-        factory(ProfessionalReference::class, 10)->create();
-        //factory(Role::class, 10)->create();
-        factory(State::class, 10)->create();
-        //factory(Teacher::class, 10)->create();
-        factory(User::class, 10)->create();
+        //factory(Ability::class, 10)->create();
+        factory(AcademicFormation::class, 10)->create();
+        //factory(Course::class, 10)->create();
+        //factory(ProfessionalExperience::class, 10)->create();
+        //factory(ProfessionalReference::class, 10)->create();
     }
 }

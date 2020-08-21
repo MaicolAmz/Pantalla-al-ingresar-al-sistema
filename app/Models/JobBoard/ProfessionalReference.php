@@ -4,7 +4,8 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JoabBoard\Professional;
+use App\Models\JobBoard\Professional;
+use App\Models\Ignug\State;
 
     class ProfessionalReference extends Model implements Auditable
 {
@@ -24,9 +25,13 @@ use App\Models\JoabBoard\Professional;
         'phone'
     ];
 
-    public function profsesional()
+    public function professional()
     {
         return $this->belongsTo(Professional::class);
     }
 
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 }
