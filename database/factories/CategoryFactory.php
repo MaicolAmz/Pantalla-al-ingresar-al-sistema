@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\JobBoard\Catalogue;
+use App\Models\Ignug\Catalogue as Category;
 use Faker\Generator as Faker;
 
-$factory->define(Catalogue::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
         'parent_code_id' => null,// random_int(1, 10),
         'code' => $faker->ean13,

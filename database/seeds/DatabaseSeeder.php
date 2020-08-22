@@ -7,7 +7,8 @@ use App\Models\Attendance\Workday;
 use App\User;
 use App\Role;
 use App\Models\Ignug\Career;
-use App\Models\Ignug\Catalogue;
+use App\Models\JobBoard\Catalogue;
+use App\Models\Ignug\Catalogue as Category;
 use App\Models\Ignug\File;
 use App\Models\Ignug\Image;
 use App\Models\Ignug\Institution;
@@ -22,6 +23,7 @@ use App\Models\JobBoard\ProfessionalExperience;
 use App\Models\JobBoard\ProfessionalReference;
 use App\Models\JobBoard\Ability;
 use App\Models\JobBoard\AcademicFormation;
+use App\Models\JobBoard\Location;
 
 class DatabaseSeeder extends Seeder
 {
@@ -523,6 +525,7 @@ class DatabaseSeeder extends Seeder
 
         factory(State::class, 10)->create();
         factory(Catalogue::class, 10)->create();
+        factory(Category::class, 10)->create();
         factory(Institution::class, 10)->create();
         //factory(Role::class, 10)->create();
         factory(User::class, 10)->create();
@@ -532,7 +535,8 @@ class DatabaseSeeder extends Seeder
         //factory(File::class, 10)->create();
         //factory(Image::class, 10)->create();
         factory(Company::class, 10)->create();
-        factory(Offer::class, 10)->create();
+        //factory(Location::class, 10)->create();
+        //factory(Offer::class, 10)->create();
         factory(Professional::class, 10)->create();
         //factory(Ability::class, 10)->create();
         factory(AcademicFormation::class, 10)->create();

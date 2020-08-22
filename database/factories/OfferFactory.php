@@ -7,24 +7,24 @@ use Faker\Generator as Faker;
 
 $factory->define(Offer::class, function (Faker $faker) {
     return [
-        'company_id' => $faker->random_int(1, 10),
-        'code' => $faker->text,
+        'company_id' => random_int(1, 10),
+        'code' => $faker->text($maxNbChars = 100),
         'contact' => $faker->tollFreePhoneNumber,
-        'contact' => $faker->email,
+        'email' => $faker->email,
         'phone' => $faker->tollFreePhoneNumber,
         'cell_phone' => $faker->tollFreePhoneNumber,
-        'contract_type' => $faker->text,
-        'position' => $faker->text,
-        'training_hours' => $faker->text,
-        'experience_time' => $faker->text,
-        'remuneration' => $faker->text,
-        'working_day' => $faker->text,
-        'numbers_jobs' => $faker->text,
+        'contract_type' => $faker->text($maxNbChars = 100),
+        'position' => $faker->text($maxNbChars = 100),
+        'training_hours' => $faker->text($maxNbChars = 100),
+        'experience_time' => $faker->text($maxNbChars = 100),
+        'remuneration' => $faker->text($maxNbChars = 100),
+        'working_day' => $faker->text($maxNbChars = 100),
+        'number_jobs' => $faker->text($maxNbChars = 100),
         'start_date' => $faker->date,
         'finish_date' => $faker->date,
-        'activities' => $faker->text,
-        'aditional_information' => $faker->text,
-        'location_id' => $faker->random_int(1, 10),
+        'activities' => $faker->text($maxNbChars = 100),
+        'aditional_information' => $faker->text($maxNbChars = 100),
+        'location_id' => random_int(1, 10),
         'state_id' => 1
     ];
 });
