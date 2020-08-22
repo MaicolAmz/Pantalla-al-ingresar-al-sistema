@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // States
+        
 /*
         factory(State::class)->create([
             'code' => '1',
