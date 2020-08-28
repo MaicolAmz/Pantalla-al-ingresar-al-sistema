@@ -5,13 +5,13 @@ namespace App\Models\Attendance;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Ignug\State;
-use App\Models\Ignug\Catalogue;
+use App\Models\Attendance\Catalogue;
 
 class Attendance extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    protected $connection = 'pgsql-ignug';
+    protected $connection = 'pgsql-attendance';
     protected $fillable = [
         'date'
     ];
