@@ -81,8 +81,8 @@ class ProfessionalController extends Controller
             ->where('professionals.state_id', 1)
             ->where('professionals.about_me', '<>', '')
 //            ->where('academic_formations.state', 'ACTIVE')
-            ->orderby('professionals.' . $request->field, $request->order)
-            ->paginate($request->limit);
+            //->orderby('professionals.' . $request->field, $request->order)
+            ->paginate(10);
 
 //        $professionals = Professional::where('professionals.state', 'ACTIVE')
 //            ->where('academic_formations.state', 'ACTIVE')
