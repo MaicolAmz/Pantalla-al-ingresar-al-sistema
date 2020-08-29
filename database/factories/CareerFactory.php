@@ -9,7 +9,7 @@ $factory->define(Career::class, function (Faker $faker) {
     return [
         'institution_id' => rand(1, 10),
         'code' => $faker->ean13,
-        'name' => $faker->streetName,
+        'name' => $faker->randomElement(['Electrónico', 'Mecánico Industrial', 'Automotriz', 'Software']),
         'description' => $faker->text($maxNbChars = 100),
         'modality_id' => rand(1, 10),
         'resolution_number' => $faker->text($maxNbChars = 200),

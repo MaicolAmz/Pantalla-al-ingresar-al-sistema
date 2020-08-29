@@ -9,7 +9,7 @@ $factory->define(Company::class, function (Faker $faker) {
     return [
         'user_id' => random_int(1, 10),
         'type_id' => random_int(1, 10),
-        'trade_name' => $faker->name,
+        'trade_name' => $faker->company,
         'comercial_activity' => $faker->catchPhrase,
         'state_id' => 1
     ];
