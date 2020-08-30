@@ -25,7 +25,7 @@ Route::group(['prefix' => 'professionals'], function () {
 });
 /**********************************************************************************************************************/
 
-/* Rutas para obtener todos los profesionales y ofertas*/
+/* Rutas para obtener todos los postulantes */
 Route::group(['prefix' => 'postulants'], function () {
 
     // Ruta para gestionar los datos personales
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'postulants'], function () {
     Route::get('/validateAppliedPostulant', 'JobBoard\ProfessionalController@validateAppliedPostulant');
 });
 
-// ????????????
+// Total de Empresas, Profesionales y Ofertas
 Route::get('/total', function () {
     $now = Carbon::now();
     $totalCompanies = \App\Models\JobBoard\Company::where('state_id', 1)->count();
@@ -54,9 +54,9 @@ Route::get('/total', function () {
 
 /* Rutas para filtrar a los profesionales y ofertas*/
 
-//Ruta que ingresar el filtro para realizar la consulta
+//Ruta para filtrar los postulantes utilizando un campo
 Route::post('/postulants/filter', 'JobBoard\ProfessionalController@filterPostulants');
 
-//Ruta que obtiene la busqueda que se realiza   
+//??? Esta ruta es igual a Route::get('', 'JobBoard\ProfessionalController@getProfessionals')
 Route::get('/postulants/filter', 'JobBoard\ProfessionalController@filterPostulantsFields');
 /**********************************************************************************************************************/
