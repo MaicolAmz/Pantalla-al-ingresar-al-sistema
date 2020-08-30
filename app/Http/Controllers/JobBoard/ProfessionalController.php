@@ -77,7 +77,8 @@ class ProfessionalController extends Controller
     {
         $professionals = Professional::
         join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
-            ->with('academicFormations')
+            ->join('catalogues', 'academic_formations.professional_degree_id', '=', 'catalogues.id')
+            //->with('academicFormations')
             ->where('professionals.state_id', 1)
             ->where('professionals.about_me', '<>', '')
 //            ->where('academic_formations.state', 'ACTIVE')
