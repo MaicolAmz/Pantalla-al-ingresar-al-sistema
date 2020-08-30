@@ -60,3 +60,9 @@ Route::post('/postulants/filter', 'JobBoard\ProfessionalController@filterPostula
 //??? Esta ruta es igual a Route::get('', 'JobBoard\ProfessionalController@getProfessionals')
 Route::get('/postulants/filter', 'JobBoard\ProfessionalController@filterPostulantsFields');
 /**********************************************************************************************************************/
+
+/* Ruta para obtener las categorías del filtro */
+Route::get('/catalogues', function () {
+    $catalogues = App\Models\JobBoard\Catalogue::get()->where('catalogue.parent_code_id', null);
+    return response()->json(['catalogues' => $catalogues], 200);
+});
