@@ -75,21 +75,17 @@ class ProfessionalController extends Controller
     /* Metodos para gestionar los datos personales*/
     function getProfessionals(Request $request)
     {
-        $professionals = Professional::
-        join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
-            ->join('catalogues', 'academic_formations.professional_degree_id', '=', 'catalogues.id')
-            //->with('academicFormations')
-            ->where('professionals.state_id', 1)
-            ->where('professionals.about_me', '<>', '')
-//            ->where('academic_formations.state', 'ACTIVE')
-            //->orderby('professionals.' . $request->field, $request->order)
-            ->paginate(10);
-
-//        $professionals = Professional::where('professionals.state', 'ACTIVE')
-//            ->where('academic_formations.state', 'ACTIVE')
-//            ->join('academic_formations', 'academic_formations.professional_id', '=', 'academic_formations.id')
-//            ->orderby('professionals.' . $request->field, $request->order)
-//            ->paginate($request->limit);
+        $professionals = Professional::with(['academicFormations' => function ($query) {
+                $query->with('professionalDegree')
+                ->where('state_id', 1);
+            }])
+            ->with(['state' => function ($query) {
+                $query->where('code', '1');
+            }])
+            ->where('about_me', '<>', '')
+            ->orderby('professionals.' . $request->field, $request->order)
+            ->paginate($request->limit);
+            
         return response()->json([
             'pagination' => [
                 'total' => $professionals->total(),

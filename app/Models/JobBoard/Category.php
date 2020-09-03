@@ -23,7 +23,7 @@ class Category extends Model implements Auditable
         return $this->belongsTo(State::class);
     }
 
-    public function tasks()
+    public function children()
     {
         return $this->hasMany(Category::class, 'parent_code_id');
     }

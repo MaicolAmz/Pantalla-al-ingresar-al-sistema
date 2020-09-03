@@ -40,7 +40,7 @@ class AcademicFormation extends Model implements Auditable
         return $this->belongsTo(Catalogue::class);
     }
 
-    public function professional_degree()
+    public function professionalDegree()
     {
         return $this->belongsTo(Catalogue::class);
     }

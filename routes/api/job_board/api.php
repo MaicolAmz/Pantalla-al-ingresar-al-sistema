@@ -62,7 +62,6 @@ Route::get('/postulants/filter', 'JobBoard\ProfessionalController@filterPostulan
 /**********************************************************************************************************************/
 
 /* Ruta para obtener las categorías del filtro */
-Route::get('/catalogues', function () {
-    $catalogues = App\Models\JobBoard\Catalogue::get()->where('catalogue.parent_code_id', null);
-    return response()->json(['catalogues' => $catalogues], 200);
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('', 'JobBoard\CategoryController@index');
 });

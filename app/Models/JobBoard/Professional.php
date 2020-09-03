@@ -13,6 +13,7 @@ use App\Models\JobBoard\Language;
 use App\Models\JobBoard\Course;
 use App\Models\JobBoard\ProfessionalExperience;
 use App\Models\JobBoard\ProfessionalReference;
+use App\Models\JobBoard\Catalogue;
 use App\Models\Ignug\State;
 
 class Professional extends Model implements Auditable
