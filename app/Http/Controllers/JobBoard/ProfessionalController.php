@@ -49,24 +49,38 @@ class ProfessionalController extends Controller
     //Método para filtrar postulantes segun cambios
     function filterPostulantsFields(Request $request)
     {
-        $postulants = Professional::
+        /*
+        $postulants = Professional::with([])
         join('academic_formations', 'academic_formations.professional_id', '=', 'professionals.id')
             ->where('professionals.about_me', '<>', '')
             ->where('professionals.state_id', 1)
             ->where('academic_formations.state_id', 1)
+        */
+        $professionals = Professional::with(['academicFormations' => function ($query) use ($request) {
+            $query->with(['professionalDegree' => function ($query1) use ($request) {
+                $query1->where('name', 'like', strtoupper($request->filter) . '%');
+            }])
+            ->where('state_id', 1);
+            //->where('name', 'like', strtoupper($request->filter) . '%')
+            //->where('name', 'like', strtoupper($request->filter) . '%');
+        }])
+            ->with(['state' => function ($query) {
+                $query->where('code', '1');
+            }])
+            ->where('about_me', '<>', '')
             //->where('career', 'like', strtoupper($request->filter) . '%')
             //->OrWhere('professional_degree', 'like', '%' . strtoupper($request->filter) . '%')
             ->orderby('professionals.' . $request->field, $request->order)
             ->paginate($request->limit);
         return response()->json([
             'pagination' => [
-                'total' => $postulants->total(),
-                'current_page' => $postulants->currentPage(),
-                'per_page' => $postulants->perPage(),
-                'last_page' => $postulants->lastPage(),
-                'from' => $postulants->firstItem(),
-                'to' => $postulants->lastItem()
-            ], 'postulants' => $postulants], 200);
+                'total' => $professionals->total(),
+                'current_page' => $professionals->currentPage(),
+                'per_page' => $professionals->perPage(),
+                'last_page' => $professionals->lastPage(),
+                'from' => $professionals->firstItem(),
+                'to' => $professionals->lastItem()
+            ], 'postulants' => $professionals], 200);
 
     }
 
