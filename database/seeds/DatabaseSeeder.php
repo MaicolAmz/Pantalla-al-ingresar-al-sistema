@@ -1,31 +1,25 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Attendance\Attendance;
-use App\Models\Attendance\Catalogue as AttendanceCatalogue;
-use App\Models\Attendance\Task;
-use App\Models\Attendance\Workday;
-use App\User;
-use App\Role;
-use App\Models\Ignug\Career;
-use App\Models\Ignug\Catalogue as IgnugCatalogue;
-use App\Models\Ignug\File;
-use App\Models\Ignug\Image;
-use App\Models\Ignug\Institution;
 use App\Models\Ignug\State;
+use App\Models\Attendance\Catalogue as AttendanceCatalogue;
+use App\Models\Ignug\Catalogue as IgnugCatalogue;
+use App\Role;
+use App\User;
 use App\Models\Ignug\Teacher;
-use App\Models\JobBoard\Catalogue as JobBoardCatalogue;
+use App\Models\Ignug\Institution;
+use App\Models\JobBoard\Professional;
+use App\Models\JobBoard\AcademicFormation;
+use App\Models\JobBoard\Course;
+use App\Models\JobBoard\ProfessionalReference;
+use App\Models\JobBoard\ProfessionalExperience;
+use App\Models\JobBoard\Language;
+use App\Models\JobBoard\Ability;
 use App\Models\JobBoard\Category;
 use App\Models\JobBoard\Company;
-use App\Models\JobBoard\Course;
-use App\Models\JobBoard\Language;
 use App\Models\JobBoard\Offer;
-use App\Models\JobBoard\Professional;
-use App\Models\JobBoard\ProfessionalExperience;
-use App\Models\JobBoard\ProfessionalReference;
-use App\Models\JobBoard\Ability;
-use App\Models\JobBoard\AcademicFormation;
-use App\Models\JobBoard\Location;
+use App\Models\JobBoard\Catalogue as JobBoardCatalogue;
+use App\Models\JobBoard\Location as JobBoardLocation;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,7 +30,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
         // States
         factory(State::class)->create([
             'code' => '1',
@@ -533,13 +526,13 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        //Category
-        //Items
+                //Category
+        //Career
         factory(Category::class)->create([
             'parent_code_id' => null,
             'code' => 'A',
             'name' => 'EDUCACION',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -547,7 +540,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'B',
             'name' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -555,7 +548,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'C',
             'name' => 'ADMINISTRACION',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -563,7 +556,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'D',
             'name' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -571,7 +564,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'E',
             'name' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -579,7 +572,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'F',
             'name' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -587,7 +580,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'G',
             'name' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -595,7 +588,7 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'H',
             'name' => 'SALUD Y BIENESTAR',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
@@ -603,1767 +596,1768 @@ class DatabaseSeeder extends Seeder
             'parent_code_id' => null,
             'code' => 'I',
             'name' => 'SERVICIOS',
-            'type' => 'father',
+            'type' => 'career',
             'icon' => 'pi-angle-down',
             'state_id' => 1
         ]);
 
-        //Childrens
+        //Professional degree
 
         factory(Category::class)->create([
             'parent_code_id' => 1,
-            'code' => 'A',
+            'code' => 'EDUCACION',
             'name' => 'ASISTENTE PEDAGOGICO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 1,
-            'code' => 'A',
+            'code' => 'EDUCACION',
             'name' => 'ASISTENTE EN EDUCACION INCLUSIVA CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR Y CONDUCTOR DE RADIO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR Y CONDUCTOR DE TELEVISION CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR RADIOFONICO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR RADIAL COMUNITARIO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR EN COMUNICACION AUDIOVISUAL CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR EN TELEVISION COMUNITARIA CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR EN MULTIMEDIA CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR DE SONIDO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'LOCUTOR CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'PRODUCTOR DE MEDIOS IMPRESOS CON NIVEL EQUIVALENTE A TECNOLOGOSUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'COMUNICADOR DIGITAL CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'GRAFOLOGO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'TECNOLOGO SUPERIOR EN CRIMINALISTICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 2,
-            'code' => 'B',
+            'code' => 'CIENCIAS SOCIALES, PERIODISMO E INFORMACION',
             'name' => 'TECNOLOGO SUPERIOR EN CRIMINOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN TRIBUTACION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN AUDITORIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN CONTABILIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN SEGUROS Y RIESGOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN ADMINISTRACION FINANCIERA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN ADMINISTRACION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN ADMINISTRACION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION DEL PATRIMONIO HISTORICO CULTURAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION DE OPERACIONES TURISTICAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION PUBLICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN MARKETING',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN PUBLICIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN OPERACION DE CENTRALES TELEFONICAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN PROMOCION CULTURAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR SUPERIOR EN ASISTENCIA ADMINISTRATIVA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN ASISTENCIA ADMINISTRATIVA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN SECRETARIADO EJECUTIVO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN SECRETARIADO EJECUTIVO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN VENTAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN VENTAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN COMERCIO EXTERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN BIENES RAICES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN BIENES RAICES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNICO SUPERIOR EN GESTION DE PRODUCCION Y SERVICIOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION DE PRODUCCION Y SERVICIOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION DEL TALENTO HUMANO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 3,
-            'code' => 'C',
+            'code' => 'ADMINISTRACION',
             'name' => 'TECNOLOGO SUPERIOR EN FORMACION OCUPACIONAL POR COMPETENCIAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNOLOGO SUPERIOR EN BIOTECNOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNICO SUPERIOR EN PROTECCION DEL MEDIO AMBIENTE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNOLOGO SUPERIOR EN PROTECCION DEL MEDIO AMBIENTE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNICO SUPERIOR EN DESARROLLO AMBIENTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO AMBIENTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNOLOGO SUPERIOR EN PROMOCION DE ENERGIAS RENOVABLES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TECNOLOGO SUPERIOR FORESTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'GUARDAPARQUES CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'TOPOGRAFO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 4,
-            'code' => 'D',
+            'code' => 'CIENCIAS NATURALES, MATEMATICAS Y ESTADISTICA',
             'name' => 'ANALISTA DE SUELOS CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNICO SUPERIOR EN ENSAMBLAJE Y MANTENIMIENTO DE EQUIPOS DE COMPUTO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN ENSAMBLAJE Y MANTENIMIENTO DE EQUIPOS DE COMPUTO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNICO SUPERIOR EN GESTION DE BASES DE DATOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN DISEÑO Y GESTION DE BASE DE DATOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNICO SUPERIOR EN INSTALACION Y MANTENIMIENTO DE REDES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN DISEÑO Y MANTENIMIENTO DE REDES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNICO SUPERIOR EN REDES Y TELECOMUNICACIONES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN REDES Y TELECOMUNICACIONES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO DE SOFTWARE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'AUDITOR DE SISTEMAS CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'AUDITOR DE SISTEMAS CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO DE APLICACIONES MOVILES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO DE APLICACIONES WEB',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 5,
-            'code' => 'E',
+            'code' => 'TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION (TIC)',
             'name' => 'TECNICO SUPERIOR EN MANTENIMIENTO DE SOFTWARE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN POLIMEROS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN QUIMICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MEDICION Y MONITOREO AMBIENTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN TRATAMIENTO DE DESECHOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTRICIDAD Y POTENCIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTRICIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ENERGIAS ALTERNATIVAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MANTENIMIENTO ELECTRICO Y CONTROL INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MANTENIMIENTO ELECTRICO Y CONTROL INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTRONICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTROMECANICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTROMECANICA AUTOMOTRIZ',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN AUTOMATIZACION E INSTRUMENTACION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN AUTOMATIZACION E INSTRUMENTACION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN ELECTRONICA EN INSTRUMENTACION AVIONICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ELECTRONICA EN INSTRUMENTACION AVIONICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN TELEMATICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN TELEMATICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN SOLDADURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN ENDEREZADA Y PINTURA AUTOMOTRIZ',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN METALMECANICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN METALMECANICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECANICA AERONAUTICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MECANICA NAVAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECANICA NAVAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MECANICA AUTOMOTRIZ',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECANICA AUTOMOTRIZ',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MECANICA INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECANICA INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN REFRIGERACION Y AIRE ACONDICIONADO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MANTENIMIENTO MECANICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MANTENIMIENTO MECANICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN SISTEMAS DE INYECCION A GASOLINA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN SISTEMAS DE INYECCION A DIESEL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MANTENIMIENTO Y REPARACION DE MOTORES A DIESEL Y GASOLINA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECATRONICA AUTOMOTRIZ',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PROCESAMIENTO DE ALIMENTOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN ENOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PROCESAMIENTO INDUSTRIAL DE LA MADERA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'CARPINTERO CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'CARPINTERO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PROCESAMIENTO INDUSTRIAL DEL VIDRIO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PROCESAMIENTO INDUSTRIAL DEL PLASTICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PROCESAMIENTO DE CUERO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION TEXTIL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN FABRICACION DE CALZADO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN CONFECCION TEXTIL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PETROLEOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MINERIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN MECANICA Y OPERACION DE MAQUINAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MECANICA Y OPERACION DE MAQUINAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN IMPRESION OFFSET Y ACABADOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN GESTION DE LA CALIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN MANTENIMIENTO Y SEGURIDAD INDUSTRIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN CATASTROS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNICO SUPERIOR EN OBRAS CIVILES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 6,
-            'code' => 'F',
+            'code' => 'INGENIERIA, INDUSTRIA Y CONSTRUCCION',
             'name' => 'TECNOLOGO SUPERIOR EN CONSTRUCCION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN PERMACULTURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNICO SUPERIOR EN AGROECOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN AGROECOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNICO SUPERIOR EN PRODUCCION AGRICOLA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION AGRICOLA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION ANIMAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION MADERERA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN PRODUCCION PECUARIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN FLORICULTURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN FRUTICULTURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN FLORI- FRUTICULTURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN CUNICULTURA Y ESPECIES MENORES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNICO SUPERIOR EN MECANIZACION AGRICOLA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN MECANIZACION AGRICOLA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR FORESTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN ACUICULTURA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN NUTRICION ANIMAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 7,
-            'code' => 'G',
+            'code' => 'AGRICULTURA, SILVICULTURA, PESCA Y VETERINARIA',
             'name' => 'TECNOLOGO SUPERIOR EN CUIDADO CANINO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN ODONTOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN MECANICA DENTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN LABORATORIO CLINICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN LABORATORIO CLINICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN EMERGENCIAS MEDICAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN IMAGENOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN IMAGENOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN REHABILITACION FISICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN REHABILITACION FISICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN ENFERMERIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN FARMACIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN PODOLOGIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN NATUROPATIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNICO SUPERIOR EN ATENCION PRIMARIA DE SALUD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN ATENCION INTEGRAL A ADULTOS MAYORES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 8,
-            'code' => 'H',
+            'code' => 'SALUD Y BIENESTAR',
             'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO INFANTIL INTEGRAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
 
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN TRICOLOGIA Y COSMIATRIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'ASESOR DE IMAGEN CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN ESTETICA INTEGRAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN ESTETICA INTEGRAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'MAQUILLISTA PROFESIONAL CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN TANATOESTETICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN HOTELERIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN GASTRONOMIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN ARTE CULINARIO ECUATORIANO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN DIETETICA Y COCINA LIGHT',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN PANADERIA Y REPOSTERIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'GESTOR DE EVENTOS, FERIAS Y CONVENCIONES CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'ENTRENADOR DEPORTIVO CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'ENTRENADOR DEPORTIVO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'DIRECTOR TECNICO EN DEPORTES CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'DIRECTOR TECNICO EN DEPORTES CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN TURISMO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'GUIA NACIONAL DE TURISMO CON NIVEL EQUIVALENTE A TECNICO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'GUIA NACIONAL DE TURISMO CON NIVEL EQUIVALENTE A TECNOLOGO SUPERIOR',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN PLANIFICACION Y DESARROLLO DE PROYECTOS TURISTICOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SERVICIOS AEREOS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SALUBRIDAD Y MANEJO AMBIENTAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD INTEGRAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD INTEGRAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD Y PREVENCION DE RIESGOS LABORALES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD Y PREVENCION DE RIESGOS LABORALES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD E HIGIENE DEL TRABAJO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD E HIGIENE DEL TRABAJO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN INTERPRETACION DE LENGUA DE SEÑAS',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN OPERACIONES DE RESCATE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN OPERACIONES DE RESCATE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN CIENCIAS MILITARES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN CIENCIAS MILITARES',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD CIUDADANA Y ORDEN PUBLICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD CIUDADANA Y ORDEN PUBLICO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN INVESTIGACION DE ACCIDENTES DE TRANSITO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN INVESTIGACION DE ACCIDENTES DE TRANSITO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD PENITENCIARIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD PENITENCIARIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN CIENCIAS DE LA SEGURIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN CIENCIAS DE LA SEGURIDAD',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN SEGURIDAD ELECTRONICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN SEGURIDAD ELECTRONICA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN PLANIFICACION Y GESTION DEL TRANSITO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN PLANIFICACION Y GESTION DEL TRANSITO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN VIGILANCIA Y SEGURIDAD CIUDADANA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN VIGILANCIA Y SEGURIDAD CIUDADANA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN INVESTIGACIONES DE POLICIA JUDICIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN INVESTIGACIONES DE POLICIA JUDICIAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN LOGISTICA Y TRANSPORTE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN LOGISTICA Y TRANSPORTE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN LOGISTICA MULTIMODAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN LOGISTICA MULTIMODAL',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN LOGISTICA PORTUARIA',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN TRAFICO AEREO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN TRAFICO AEREO',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN PLANIFICACION Y GESTION DEL TRANSPORTE TERRESTRE',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNICO SUPERIOR EN LOGISTICA DE ALMACENAMIENTO Y DISTRIBUCION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         factory(Category::class)->create([
             'parent_code_id' => 9,
-            'code' => 'I',
+            'code' => 'SERVICIOS',
             'name' => 'TECNOLOGO SUPERIOR EN LOGISTICA DE ALMACENAMIENTO Y DISTRIBUCION',
-            'type' => 'children',
+            'type' => 'professional_degree',
             'icon' => '',
             'state_id' => 1
         ]);
         
         // Catalogue of career
+        /*
         factory(JobBoardCatalogue::class)->create([
             'parent_code_id' => null,
             'code' => '5',
@@ -2388,7 +2382,7 @@ class DatabaseSeeder extends Seeder
             'icon' => '',
             'state_id' => 1,
         ]);
-
+            */
         //Catalogue of Institution
         factory(JobBoardCatalogue::class)->create([
             'parent_code_id' => null,
@@ -2415,71 +2409,39 @@ class DatabaseSeeder extends Seeder
             'state_id' => 1,
         ]);
 
-        //Catalogue of Professional Degree
-        factory(JobBoardCatalogue::class)->create([
-            'parent_code_id' => null,
-            'code' => '7',
-            'name' => 'TECNOLOGO SUPERIOR EN DESARROLLO DE SOFTWARE',
-            'type' => 'career',
-            'icon' => '',
-            'state_id' => 1,
-        ]);
-        factory(JobBoardCatalogue::class)->create([
-            'parent_code_id' => null,
-            'code' => '7',
-            'name' => 'TECNOLOGO SUPERIOR EN GESTION PUBLICA',
-            'type' => 'career',
-            'icon' => '',
-            'state_id' => 1,
-        ]);
-        factory(JobBoardCatalogue::class)->create([
-            'parent_code_id' => null,
-            'code' => '7',
-            'name' => 'TECNOLOGO SUPERIOR EN MARKETING',
-            'type' => 'career',
-            'icon' => '',
-            'state_id' => 1,
-        ]);
-
-        //Catalogue Company
-        factory(JobBoardCatalogue::class)->create([
-            'parent_code_id' => null,
-            'code' => '8',
-            'name' => 'ESPE',
-            'type' => 'company',
-            'icon' => '',
-            'state_id' => 1,
-        ]);
-
-
-        //factory(Catalogue::class, 10)->create();
-        factory(Institution::class, 10)->create();
-        //factory(Role::class, 10)->create();
-        factory(User::class, 10)->create()->each(function ($user) {
+        //factory(Category::class, 100)->create();
+        factory(JobBoardCatalogue::class, 100)->create();
+        factory(JobBoardLocation::class, 100)->create();
+        factory(User::class, 100)->create()->each(function ($user) {
             $user->teacher()->save(factory(Teacher::class)->make());
+            $professional = $user->professional()->save(factory(Professional::class)->make());
+            $professional->academicFormations()->save(factory(AcademicFormation::class)->make());
+            $professional->abilities()->save(factory(Ability::class)->make());
+            $professional->languages()->save(factory(Language::class)->make());
+            $professional->courses()->save(factory(Course::class)->make());
+            $professional->professionalExperiences()->save(factory(ProfessionalExperience::class)->make());
+            $professional->professionalReferences()->save(factory(ProfessionalReference::class)->make());
             $user->roles()->attach(1);
         });
-        factory(Career::class, 10)->create(); 
-        //factory(Teacher::class, 10)->create();
-        //factory(Attendance::class, 10)->create();
-        //factory(File::class, 10)->create();
-        //factory(Image::class, 10)->create();
-        factory(Company::class, 10)->create();
-        //factory(Location::class, 10)->create();
-        //factory(Offer::class, 10)->create();
-        factory(Professional::class, 10)->create();
-        //factory(Ability::class, 10)->create();
-        factory(AcademicFormation::class, 10)->create();
-        //factory(Course::class, 10)->create();
-        //factory(ProfessionalExperience::class, 10)->create();
-        //factory(ProfessionalReference::class, 10)->create();
+        factory(User::class, 100)->create()->each(function ($user) {
+            $user->teacher()->save(factory(Teacher::class)->make());
+            $company = $user->company()->save(factory(Company::class)->make());
+            $offer = $company->offers()->save(factory(Offer::class)->make());
+            $offer->categories()->attach(random_int(1, 100));
+            $offer->professionals()->attach(random_int(1, 100));
+            $company->professionals()->attach(random_int(1, 100));
+            $user->roles()->attach(2);
+        });
+        // factory(App\Models\JobBoard::class, 10)->create();
 
         /*
+            drop schema if exists authentication cascade;
             drop schema if exists attendance cascade;
             drop schema if exists ignug cascade;
             drop schema if exists job_board cascade;
             drop schema if exists web cascade;
 
+            create schema authentication;
             create schema attendance;
             create schema ignug;
             create schema job_board;

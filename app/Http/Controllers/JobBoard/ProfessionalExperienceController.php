@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\JobBoard\Professional;
 use App\Models\JobBoard\ProfessionalExperience;
-use App\Controllers\Controller;
+
 
 class ProfessionalExperienceController extends Controller
 {
-    //Método para obtener un profesional y todas las experiencias del profesional
-    function index(Request $request)
+// Muestra los datos del profesional con experiencia//
+    function index (Request $request)
     {
         try {
             $professional = Professional::where('id', $request->user_id)->first();
@@ -54,7 +54,7 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
-/*
+
     function show($id)
     {
         try {
@@ -72,6 +72,7 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
+//Almacena los  Datos creado del profesional que envia//
 
     function store(Request $request)
     {
@@ -86,7 +87,7 @@ class ProfessionalExperienceController extends Controller
                     'position' => strtoupper($dataProfessionalExperiences ['position']),
                     'job_description' => strtoupper($dataProfessionalExperiences ['job_description']),
                     'start_date' => $dataProfessionalExperiences ['start_date'],
-                    'finish_date' => $dataProfessionalExperiences ['finish_date'],
+                    'end_date' => $dataProfessionalExperiences ['end_date'],
                     'reason_leave' => strtoupper($dataProfessionalExperiences ['reason_leave']),
                     'current_work' => $dataProfessionalExperiences ['current_work'],
                 ]);
@@ -106,7 +107,7 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
-
+//Actualiza los datos del profesional
     function update(Request $request)
     {
         try {
@@ -117,7 +118,7 @@ class ProfessionalExperienceController extends Controller
                 'position' => strtoupper($dataProfessionalExperiences ['position']),
                 'job_description' => strtoupper($dataProfessionalExperiences ['job_description']),
                 'start_date' => $dataProfessionalExperiences ['start_date'],
-                'finish_date' => $dataProfessionalExperiences ['finish_date'],
+                'end_date' => $dataProfessionalExperiences ['end_date'],
                 'reason_leave' => strtoupper($dataProfessionalExperiences ['reason_leave']),
                 'current_work' => $dataProfessionalExperiences ['current_work'],
             ]);
@@ -134,7 +135,7 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
-
+//Elimina los datos del profesional
     function destroy(Request $request)
     {
         try {
@@ -152,5 +153,4 @@ class ProfessionalExperienceController extends Controller
             return response()->json($e, 500);
         }
     }
-*/
 }

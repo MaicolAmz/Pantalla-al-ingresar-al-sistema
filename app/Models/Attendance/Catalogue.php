@@ -13,6 +13,7 @@ class Catalogue extends Model implements Auditable
     protected $connection = 'pgsql-attendance';
     protected $fillable = [
         'code',
+        'parent_code_id',
         'name',
         'type',
         'icon'

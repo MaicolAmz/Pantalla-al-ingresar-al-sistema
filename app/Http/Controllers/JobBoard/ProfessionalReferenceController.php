@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\JobBoard;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use App\Models\JobBoard\Professional;
+use App\Http\Controllers\Controller;
 use App\Models\JobBoard\ProfessionalReference;
-use App\Controllers\Controller;
+use App\Models\JobBoard\Professional;
+use App\Models\Ignug\State;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 class ProfessionalReferenceController extends Controller
 {
-    //Método para obtener un profesional y todas las referencias profesionales del profesional
     function index(Request $request)
     {
         try {
@@ -54,7 +55,7 @@ class ProfessionalReferenceController extends Controller
             return response()->json($e, 500);
         }
     }
-/*
+
     function show($id)
     {
         try {
@@ -147,5 +148,4 @@ class ProfessionalReferenceController extends Controller
             return response()->json($e, 500);
         }
     }
-*/
 }

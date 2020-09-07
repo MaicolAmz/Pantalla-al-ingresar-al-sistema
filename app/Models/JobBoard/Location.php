@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JobBoard\Offer;
+use App\Models\Ignug\State;
 
 class Location extends Model implements Auditable
 {
@@ -12,11 +12,19 @@ class Location extends Model implements Auditable
 
     protected $connection = 'pgsql-job-board';
     protected $fillable = [
+        'code',
+        'name',
+        'type',
+        'post_code'
     ];
 
-    public function offers()
+    public function state()
     {
-        return $this->hasMany(Offer::class);
+        return $this->belongsTo(State::class);
     }
 
+    public function children()
+    {
+        return $this->hasMany(Location::class, 'parent_code_id');
+    }
 }

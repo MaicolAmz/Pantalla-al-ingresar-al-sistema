@@ -12,7 +12,7 @@ class CategoryController extends Controller
     //Método para obtener las categorias
     function index(Request $request)
     {
-        $categories = Category:: with('children')->where('type', 'father')->get();
+        $categories = Category:: with('children')->where('type', 'career')->get();
 
         return response()->json([
             'data' => [

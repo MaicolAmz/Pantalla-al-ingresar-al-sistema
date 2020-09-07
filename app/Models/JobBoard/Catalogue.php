@@ -23,7 +23,7 @@ class Catalogue extends Model implements Auditable
         return $this->belongsTo(State::class);
     }
 
-    public function tasks()
+    public function children()
     {
         return $this->hasMany(Catalogue::class, 'parent_code_id');
     }

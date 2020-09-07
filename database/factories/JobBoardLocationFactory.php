@@ -2,16 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\JobBoard\Catalogue;
+use App\Models\JobBoard\Location;
 use Faker\Generator as Faker;
 
-$factory->define(Catalogue::class, function (Faker $faker) {
+$factory->define(Location::class, function (Faker $faker) {
     return [
-        'parent_code_id' => null,// random_int(1, 10),
         'code' => $faker->ean13,
         'name' => $faker->name,
         'type' => $faker->text($maxNbChars = 100),
-        'icon' => $faker->text($maxNbChars = 100),
+        'post_code' => $faker->postcode,
         'state_id' => 1
     ];
 });

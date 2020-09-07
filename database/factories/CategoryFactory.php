@@ -7,13 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        /*
-        'parent_code_id' => null,
         'code' => $faker->ean13,
         'name' => $faker->name,
         'type' => $faker->text($maxNbChars = 100),
         'icon' => $faker->text($maxNbChars = 100),
         'state_id' => 1
-        */
     ];
 });

@@ -4,9 +4,7 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JobBoard\Professional;
 use App\Models\Ignug\State;
-use App\Models\JobBoard\Catalogue;
 
 class ProfessionalExperience extends Model implements Auditable
 {
@@ -14,18 +12,18 @@ class ProfessionalExperience extends Model implements Auditable
 
     protected $connection = 'pgsql-job-board';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'employer',
+        'position',
         'job_description',
         'start_date',
-        'finish_date',
+        'end_date',
         'reason_leave',
-        'current_work'
+        'current_work',
+    ];
+    protected $casts = [
+        'start_date' => 'date:Y-m-d',
+        'end_date' => 'date:Y-m-d'
     ];
 
     public function professional()
@@ -33,14 +31,8 @@ class ProfessionalExperience extends Model implements Auditable
         return $this->belongsTo(Professional::class);
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Catalogue::class);
-    }
-
     public function state()
     {
         return $this->belongsTo(State::class);
     }
-
 }

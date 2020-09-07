@@ -2,10 +2,10 @@
 
 namespace App\Models\Attendance;
 
+use App\Models\Ignug\Teacher;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Ignug\State;
-use App\Models\Attendance\Catalogue;
 
 class Attendance extends Model implements Auditable
 {
@@ -37,11 +37,16 @@ class Attendance extends Model implements Auditable
 
     public function workdays()
     {
-        return $this->morphMany(Workday::class, 'workdayable');
+        return $this->hasMany(Workday::class);
     }
 
     public function tasks()
     {
-        return $this->morphMany(Task::class, 'taskable');
+        return $this->hasMany(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, Teacher::class);
     }
 }

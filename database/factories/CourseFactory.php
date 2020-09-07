@@ -7,16 +7,13 @@ use Faker\Generator as Faker;
 
 $factory->define(Course::class, function (Faker $faker) {
     return [
-        'professional_id' => random_int(31, 38),
-        'event_type' => $faker->name,
-        'event_type_id' => random_int(31, 38),
-        'institution_id' => random_int(31, 38),
-        'institution' => $faker->name,
+        'event_type_id' => random_int(1, 100),
+        'institution_id' => random_int(1, 100),
         'event_name' => $faker->name,
         'start_date' => $faker->date,
-        'finish_date' => $faker->date,
+        'end_date' => $faker->date,
         'hours' => $faker->time,
-        'type_certification_id' => random_int(31, 38),
+        'type_certification_id' => random_int(1, 100),
         'state_id' => 1
     ];
 });

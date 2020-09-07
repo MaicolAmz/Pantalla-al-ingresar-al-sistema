@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\JobBoard\Professional;
 use App\Models\JobBoard\Ability;
-use App\Controllers\Controller;
 
 class AbilityController extends Controller
 {
-    //Método para obtener un profesional y todas las habilidades del profesional
     function index(Request $request)
     {
         try {
@@ -54,7 +52,7 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
-/*
+
     function show($id)
     {
         try {
@@ -72,7 +70,7 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
-*/
+
     function validateDuplicate($dataAbility, $professional)
     {
         return Ability::where('category', $dataAbility['category'])
@@ -80,7 +78,7 @@ class AbilityController extends Controller
             ->where('state', '<>', 'DELETED')
             ->first();
     }
-/*
+
     function store(Request $request)
     {
         try {
@@ -119,7 +117,7 @@ class AbilityController extends Controller
         }
     }
 
-    function update(Request $request)
+    function updateAbility(Request $request)
     {
         try {
             $data = $request->json()->all();
@@ -161,5 +159,4 @@ class AbilityController extends Controller
             return response()->json($e, 500);
         }
     }
-*/
 }

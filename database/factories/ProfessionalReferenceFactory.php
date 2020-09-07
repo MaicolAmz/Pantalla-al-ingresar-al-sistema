@@ -7,9 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(ProfessionalReference::class, function (Faker $faker) {
     return [
-        'professional_id' => random_int(31, 38),
         'institution' => $faker->name,
-        'position' => $faker->text,
+        'position' => $faker->jobTitle,
         'contact' => $faker->tollFreePhoneNumber,
         'phone' => $faker->phoneNumber,
         'state_id' => 1

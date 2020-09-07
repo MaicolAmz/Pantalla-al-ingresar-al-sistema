@@ -2,45 +2,40 @@
 
 namespace App\Http\Controllers\JobBoard;
 
+use http\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Models\JobBoard\Professional;
+use App\Models\Jobboard\Professional;
 use App\Models\JobBoard\AcademicFormation;
-use App\Controllers\Controller;
+use Illuminate\Routing\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class AcademicFormationController extends Controller
 {
-    //Método para obtener un profesional y todas las formaciones academicas del profesional
     function index(Request $request)
     {
         try {
-            $professional = Professional::where('id', $request->user_id)->first();
-            if ($professional) {
-                $academicFormations = AcademicFormation::where('professional_id', $professional->id)
-                    ->where('state', 'ACTIVE')
-                    ->orderby($request->field, $request->order)
-                    ->paginate($request->limit);
-            } else {
-                return response()->json([
-                    'pagination' => [
-                        'total' => 0,
-                        'current_page' => 1,
-                        'per_page' => $request->limit,
-                        'last_page' => 1,
-                        'from' => null,
-                        'to' => null
-                    ], 'academicFormations' => null], 404);
-            }
+            $professional = Professional::with(['academicFormations' => function ($query) {
+                $query->with(['state' => function ($query) {
+                    $query->where('code', '1');
+                }])->with(['category' => function ($query) {
+                    $query->with(['state' => function ($query) {
+                        $query->where('code', '1');
+                    }]);
+                }])->with(['professionalDegree' => function ($query) {
+                    $query->with(['state' => function ($query) {
+                        $query->where('code', '1');
+                    }]);
+                }]);
+            }])->with(['state' => function ($query) {
+                $query->where('code', '1');
+            }])->where('id', $request->user_id)->get();
+
+
             return response()->json([
-                'pagination' => [
-                    'total' => $academicFormations->total(),
-                    'current_page' => $academicFormations->currentPage(),
-                    'per_page' => $academicFormations->perPage(),
-                    'last_page' => $academicFormations->lastPage(),
-                    'from' => $academicFormations->firstItem(),
-                    'to' => $academicFormations->lastItem()
-                ], 'academicFormations' => $academicFormations], 200);
+                'data' => ['academicFormations' => $professional]], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json($e, 405);
         } catch (NotFoundHttpException  $e) {
@@ -53,7 +48,7 @@ class AcademicFormationController extends Controller
             return response()->json($e, 500);
         }
     }
-/*
+
     function show($id)
     {
         try {
@@ -93,7 +88,7 @@ class AcademicFormationController extends Controller
                 return response()->json(null, 404);
             }
         } catch (
-            ModelNotFoundException $e) {
+        ModelNotFoundException $e) {
             return response()->json($e, 405);
         } catch (NotFoundHttpException  $e) {
             return response()->json($e, 405);
@@ -150,5 +145,4 @@ class AcademicFormationController extends Controller
             return response()->json($e, 500);
         }
     }
-*/
 }

@@ -4,22 +4,16 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JobBoard\Professional;
 use App\Models\JobBoard\Company;
-use App\Models\Ignug\State;
+use App\Models\JobBoard\Professional;
 use App\Models\JobBoard\Location;
+use App\Models\Ignug\State;
+
 
 class Offer extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-
     protected $connection = 'pgsql-job-board';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
 
     protected $fillable = [
         'code',
@@ -27,18 +21,24 @@ class Offer extends Model implements Auditable
         'email',
         'phone',
         'cell_phone',
-        'contract_type',
         'position',
         'training_hours',
+        'experience_time',
         'remuneration',
         'working_day',
         'number_jobs',
-        'experience_time',
+        'start_date',
+        'end_date',
         'activities',
         'aditional_information',
-        'start_date',
-        'finish_date'
+        'location_id',
+        'state_id'
     ];
+
+    protected $casts = [
+        'activities' => 'array',
+    ];
+
 
     public function company()
     {
@@ -48,6 +48,10 @@ class Offer extends Model implements Auditable
     public function professionals()
     {
         return $this->belongsToMany(Professional::class)->withTimestamps();
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
 
     public function location()

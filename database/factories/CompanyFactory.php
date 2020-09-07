@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(Company::class, function (Faker $faker) {
     return [
-        'user_id' => random_int(1, 10),
-        'type_id' => 8, 
+        'type_id' => 1,
         'trade_name' => $faker->company,
+        'web_page' => $faker->url,
         'comercial_activity' => $faker->catchPhrase,
         'state_id' => 1
     ];

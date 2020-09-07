@@ -4,27 +4,25 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JobBoard\Professional;
 use App\Models\Ignug\State;
-use App\Models\JobBoard\Catalogue;
 
 class Course extends Model implements Auditable
 {
+
     use \OwenIt\Auditing\Auditable;
 
     protected $connection = 'pgsql-job-board';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'institution',
         'event_name',
         'start_date',
-        'finish_date',
-        'hours'
+        'end_date',
+        'hours',
+    ];
+
+    protected $casts = [
+        'start_date' => 'date:Y-m-d',
+        'end_date' => 'date:Y-m-d'
     ];
 
     public function professional()
@@ -32,17 +30,17 @@ class Course extends Model implements Auditable
         return $this->belongsTo(Professional::class);
     }
 
-    public function event_type()
-    {
-        return $this->belongsTo(Catalogue::class);
-    }
-
     public function institution()
     {
         return $this->belongsTo(Catalogue::class);
     }
 
-    public function type_certification()
+    public function eventType()
+    {
+        return $this->belongsTo(Catalogue::class);
+    }
+
+    public function certificationType()
     {
         return $this->belongsTo(Catalogue::class);
     }
@@ -51,5 +49,4 @@ class Course extends Model implements Auditable
     {
         return $this->belongsTo(State::class);
     }
-
 }

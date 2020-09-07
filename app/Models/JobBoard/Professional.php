@@ -4,16 +4,8 @@ namespace App\Models\JobBoard;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-use App\Models\JobBoard\Offer;
-use App\Models\JobBoard\Company;
-use App\Models\User;
-use App\Models\JobBoard\AcademicFormation;
-use App\Models\JobBoard\Ability;
-use App\Models\JobBoard\Language;
-use App\Models\JobBoard\Course;
-use App\Models\JobBoard\ProfessionalExperience;
-use App\Models\JobBoard\ProfessionalReference;
-use App\Models\JobBoard\Catalogue;
+
+use App\User;
 use App\Models\Ignug\State;
 
 class Professional extends Model implements Auditable

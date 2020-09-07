@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\JobBoard\Location;
+use App\Models\Ignug\Image;
 use Faker\Generator as Faker;
 
-$factory->define(Location::class, function (Faker $faker) {
+$factory->define(Image::class, function (Faker $faker) {
     return [
         //
     ];
